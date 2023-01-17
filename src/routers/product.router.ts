@@ -8,4 +8,6 @@ const productController = new ProductController();
 
 router.post('/', validateProduct, productController.createProduct);
 
+router.get('/', productController.getAllProducts);
+
 export default router;
