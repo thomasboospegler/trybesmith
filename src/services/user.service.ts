@@ -10,4 +10,10 @@ export default class UserService {
 
     return createdUser;
   }
+
+  public async getUser(password: string): Promise<IUser | null> {
+    const user = await this.userModel.getUser(password);
+    
+    return user;
+  }
 }

@@ -20,6 +20,15 @@ export default class ProductModel {
 
   public async getAllProducts(): Promise<IProduct[]> {
     const [allProducts] = await this.connection.execute('SELECT * FROM Trybesmith.products');
+
     return allProducts as IProduct[];
+  }
+
+  public async updateProducts({ orderId, id }: Partial<IProduct>): Promise<void> {
+    await this.connection.execute(
+      'UPDATE Trybesmith.products SET order_id = ? WHERE id = ?',
+      [orderId, id],
+    );
+    // Retorna Void entao nao precisa de um retorno declarado
   }
 }
